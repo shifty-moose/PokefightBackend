@@ -31,3 +31,14 @@ export const postHighscore = async (req, res) => {
         console.log(error)
     }
 }
+
+export const getHighscores = async (req, res) => {
+    console.log("getHighscores");
+    try {
+        const data = await Highscore.find().sort({ highscore: -1 });
+        res.json(data);
+    } catch (error) {
+        res.sendStatus(500);
+        console.log(error);
+    }
+}

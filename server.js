@@ -24,4 +24,4 @@ const startServer = async () => {
 
 startServer().catch(error => {
     console.log(error, "Failed to start the server")
-})
+}) 
