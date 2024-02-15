@@ -1,4 +1,5 @@
 
+import Highscore from "../models/Highscore.js";
 import pokemons from "../pokemon.json" assert { type: "json" };
 
 export const getPokemons = (req, res) => {
@@ -16,3 +17,17 @@ export const getPokemon = (req, res) => {
     }
 };
 
+
+export const postHighscore = async (req, res) => {
+
+    try {
+        const { name, pokemon, damage, highscore } = req.body;
+
+        const data = await Highscore.create({ name, pokemon, damage, highscore })
+        console.log(data)
+        res.status(201).json(data)
+    } catch (error) {
+        res.sendStatus(500)
+        console.log(error)
+    }
+}
