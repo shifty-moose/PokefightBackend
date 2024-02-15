@@ -16,6 +16,14 @@ const HighscoreSchema = new mongoose.Schema({
     highscore: {
         required: true,
         type: Number
+    },
+    date: {
+        required: true,
+        type: Date
+    },
+    id: {
+        required: true,
+        type: Number
     }
 });
 
