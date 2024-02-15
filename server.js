@@ -1,5 +1,7 @@
+import 'dotenv/config'
 import express from 'express';
 import pokemonRoutes from './routes/pokeRoute.js';
+import { connectDB } from "./db/client.js"
 import cors from 'cors';
 
 
@@ -12,10 +14,14 @@ app.use(cors());
 app.use(express.json());
 app.use('/', pokemonRoutes);
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+const startServer = async () => {
+    await connectDB();
+    app.listen(port, () => {
+        console.log(`Port listens on port ${port}`)
+    })
+}
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-});
+
+startServer().catch(error => {
+    console.log(error, "Failed to start the server")
+})
