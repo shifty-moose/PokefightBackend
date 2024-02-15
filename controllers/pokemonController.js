@@ -21,9 +21,9 @@ export const getPokemon = (req, res) => {
 export const postHighscore = async (req, res) => {
 
     try {
-        const { name, pokemon, damage, highscore } = req.body;
+        const { name, pokemon, damage, highscore, date, id } = req.body;
 
-        const data = await Highscore.create({ name, pokemon, damage, highscore })
+        const data = await Highscore.create({ name, pokemon, damage, highscore, date, id })
         console.log(data)
         res.status(201).json(data)
     } catch (error) {
